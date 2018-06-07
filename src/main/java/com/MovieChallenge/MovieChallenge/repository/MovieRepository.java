@@ -1,5 +1,6 @@
 package com.MovieChallenge.MovieChallenge.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,7 +12,7 @@ import com.MovieChallenge.MovieChallenge.model.Movie;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
-	Optional<Movie> findByCategory(String category);
+	List<Movie> findByCategory(String category);
 	
 	
 }

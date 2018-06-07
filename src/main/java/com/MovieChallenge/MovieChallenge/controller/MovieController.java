@@ -1,5 +1,6 @@
 package com.MovieChallenge.MovieChallenge.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -35,27 +36,16 @@ public class MovieController {
 	@GetMapping("/findRandom")
 	public Optional<Movie> getRandomMovie() {
 		Random rand = new Random();
-		int id = rand.nextInt(5)+1;
+		int id = rand.nextInt(10)+1;
 		return movieRepository.findById(id);
 	}
 	
 	@GetMapping("/findByCategory")
-	public Optional<Movie> findByCategory1(@RequestParam("category") String category) {
-		return movieRepository.findByCategory(category); 		
+	public List<Movie> findByCategory1(@RequestParam("category") String category) {
+		List<Movie> movieListCat = new ArrayList<>();
+		movieListCat = movieRepository.findByCategory(category);
+		return movieListCat; 		
 	}
-
-//	@RequestMapping("findByCategory")
-//	public optional findByCategory(@RequestParam("category") String category) {
-//		ModelAndView mv = new ModelAndView("testing");
-//		List<Users> uList = uP.findAll();
-//	
-//		mv.addObject("findall", uList);
-//		
-//		Optional<Users> u1 = uP.findByLastName("Solomon");
-//		mv.addObject("user1", u1.get().getEmail());
-//		
-//		return mv;
-//	}
 
 
 }
